@@ -4,6 +4,23 @@
 // If it is a DOM element (i.e, a reference to a tag) end the variable name with Node or with Tag
 // Otherwise --> just find a meaningful name FOR YOU, ask yourself "What is this?" and the name should be the answer to this question
 
+
+/* DATA FOR THE APPOINTMENTS
+
+ENTITIES:
+-- Appointment --> attribute: time, description
+-- Day         --> attribute: number
+-- Month (in our case, we only have one month of 31 days)
+
+RELATIONSHIPS:
+-- One day can have zero or more meetings ( 1-to-N relationship / one to many)
+-- One month can have more days     (1-to-N relationship / one to many )
+
+(You will learn to do Entity-Relationship models)
+
+*/
+
+
 const onLoad = function() {
     // We execute ANY CODE that must be executed just after page load
     // Initialization of data, etc. etc.
@@ -23,7 +40,7 @@ const selectDay = function(event) {
     // Remember that querySelector always returns the first element it finds, while getElementsByClassName returns more than one
 
     // 2) De-select it
-    if (currentlySelectedDayNode !== null) {
+    if(currentlySelectedDayNode !== null) {
         currentlySelectedDayNode.classList.remove('selected')
     }
 
