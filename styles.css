@@ -1,7 +1,7 @@
 body {
     background-color: black;
     color: white;
-    max-width: 768px;
+    max-width: 1268px;
     margin: 0 auto;
     /* Font from Google Fonts, imported in the HEAD tag of the HTML */
     font-family: "Roboto", sans-serif;
@@ -23,6 +23,7 @@ h1{
     padding: 12px;
     border-radius: 8px;
     display: inline-block;
+    width: 60%;
 }
 
 .day {
@@ -47,5 +48,49 @@ h1{
 }
 
 #appointments-container {
-    margin-top: 20px;
+    vertical-align: top;
+    display: inline-block;
+    width: 35%;
+    min-height: 200px;
+    text-align: center;
 }
+
+#appointments-container h2 {
+    color: #00db71;
+    border-bottom: solid 3px #292929;
+    padding-bottom: 16px;
+    padding-top: 24px;
+}
+
+
+#appointments-container input {
+    height: 32px;
+    background-color: #0f0f0f;
+    border: solid 3px #00db71;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: larger;
+}
+
+#appointment-time {
+    width: 80px;
+}
+
+#appointment-time::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+}
+
+#appointment-description {
+    width: 200px;
+}
+
+#add-button {
+    margin-left: 10px;
+    width: 92px;
+    height: 54px;
+    color: rgb(32, 32, 32);
+    background-color: #00db71;
+    font-weight: bolder;
+}
+
