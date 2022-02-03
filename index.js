@@ -15,6 +15,32 @@ const onLoad = function() {
 // We tell the browser to execute the function above, on page load
 window.onload = onLoad // We assigned our onLoad function to the browser onload.
 
+const selectDay = function(event) {
+    // Let's de-select the previously selected day
+    // 1) Find the day that we selected
+    let currentlySelectedDayNode = document.querySelector(".selected")
+    // Or document.getElementsByClassName("selected")[0] --> the first (and only) element with class .selected
+    // Remember that querySelector always returns the first element it finds, while getElementsByClassName returns more than one
+
+    // 2) De-select it
+    if (currentlySelectedDayNode !== null) {
+        currentlySelectedDayNode.classList.remove('selected')
+    }
+
+    // 3) Let's get the new day we clicked on, the where the event happened
+    let clickedDayNode = event.target // The event.target attribute ALWAYS returns the node where the event was triggered by the user
+
+    // 4) Let's add the selected class
+    clickedDayNode.classList.add('selected')
+
+    // We could have styled it here
+    // BUT WE DON'T WANT TO WRITE STYLE IN JAVASCRIPT
+    // clickedDayNode.style.color = "red"
+    // clickedDayNode.style.borderColor = "red"
+    // We want to decouple as much as possible structure, functionalities, and styles
+    // HTML - JS - CSS
+}
+
 const createDays = function() {
     // TODO get the days for the current month
     // Assumption: use 31 days always, in this first release
@@ -33,7 +59,14 @@ const createDays = function() {
         dayDivNode.innerText = dayNumber
         dayDivNode.classList.add("day")
 
+        dayDivNode.onclick = selectDay // Just the name of the function, do not call it
+        // To pass parameters to the selectDay function, we would need a lambda function
+        // It will be a topic for the next modules
+
+        // dayDivNode.addEventListener("click", selectDay) // Alternative to the line above
+
         // 3) attach it to the DOM
         daysContainerNode.appendChild(dayDivNode)
     }
 }
+
