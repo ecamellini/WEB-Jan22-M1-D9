@@ -3,6 +3,8 @@ body {
     color: white;
     max-width: 768px;
     margin: 0 auto;
+    /* Font from Google Fonts, imported in the HEAD tag of the HTML */
+    font-family: "Roboto", sans-serif;
 }
 
 h1{
