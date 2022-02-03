@@ -1,4 +1,21 @@
 body {
     background-color: black;
     color: white;
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#days-container {
+    display: inline-block;
+}
+
+.day {
+    border-color: rgb(100, 100, 100);
+    border-width: 2px;
+    border-style: solid;
+    display: inline-block;
+    width: 100px;
+    line-height: 100px;
+    border-radius: 10px;
 }
