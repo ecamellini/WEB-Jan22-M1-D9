@@ -5,6 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+
+    <!--
+        ANALYSIS PROCESS / REQUIREMENTS GATHERING PROCESS
+
+        Role: BUSINESS ANALYST / ANALYST
+
+        FUNCTIONAL REQUIREMENTS (Features in scope for this release)
+
+        - Display all the days for the current month
+            (For this first release, let's just show 31 days anyways)
+        - Select a day -- by clicking on it
+        - The selected day shall be clearly highlighted/visible
+        - Show all the appointments for the day
+        - Add some appointments for a specific day (date), at a specific time
+            (appointments should be saved/stored for that day)
+        - Appoinments shall have a description
+
+        NICE TO HAVE FEATURES (Features out of scope for this release)
+        Those are features that maybe we will build in the future
+
+        - Events shall be persisted so that they are still there after reloading the page
+        - Book other peple/contacts in my appoinments
+        - Add reminders
+        - Actually show the days for the current month (e.g., 28 in we are in Feb, and not 31)
+        - Notifications for events
+        - Responsive design so that it works on mobile
+
+        ----------------------------------------------------------------
+
+        DESIGN PHASE (SOFTWARE ARCHITECTURE DESIGN)
+        We talk about software design, not about visual/UX design, for the scope of this document.
+
+        Role: SOFTWARE ARCHITECT
+
+        >>> HTML:
+        -- Headings for the sections of the page: Calendar / Add Event
+        -- ?? Divs for the sections of the page: Calendar / Add Event
+        -- Container for the days (probably a div) - (we can think about using a table?)
+        -- Div tags for each day (they will contain the day number)
+        -- So: one div for the month, containing divs for each day
+        -- Inputs: time for meeting time, text for meeting description, button to save
+        -- A list for appointmens for the selected day
+
+        >>> CSS:
+        -- Class for the headings (caps lock, bold, green)
+        -- The style of the body: black background, etc.
+        -- .day class to apply a style to the day (e.g., border if selected, margin)
+        -- a class / styles for input tags (green, etc.)
+        -- .calendar -- class for the month, the container for the days
+        -- .appointmens class to style appointments for the day
+        (A good way to display a calendar like this could be a flexbox -- you will learn about it in next modules)
+
+        >>> JS:
+        -- Based on the month (actually, right now, always 31) -- display a div each day
+        -- Day onclick -> select that day as current day, and it displays the appointments for the day
+        -- Function to display all appointments programmatically: for each appointment, show a list item
+        -- Button onclick -> take input time and description, and add an appointments to the selected day
+        -- We need to store the data somewhere: many days, for each one we save zero or more appointments
+
+     -->
 </head>
 
 <body>
