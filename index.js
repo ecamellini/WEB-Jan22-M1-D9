@@ -48,11 +48,17 @@ let monthCalendarExample = [
 // We don't know how many meetings we have in a day...
 // But we know we only have 31 days in a month
 // We know the exact number of days, we can use an object
-let calendar = {
-    "1": [{ time: '09:00', description: 'Live lecture' }, { time: '20:00', description: 'Dinner' }], // First day
-    "2": [], // Second day
-    "12": [{ time: '20:00', description: 'Dinner' }]
-}
+let calendar = { } // See example below.
+// This calendar will be initialized in the createDays function
+
+    // Example:
+    // calendar = {
+    //      "1": [{ time: '09:00', description: 'Live lecture' }, { time: '20:00', description: 'Dinner' }], // First day
+    //      "2": [], // Second day
+    //      "12": [{ time: '20:00', description: 'Dinner' } ]
+    //  }
+
+// TODO persist the data so that it does not get lost at page reload
 
 const onLoad = function() {
     // We execute ANY CODE that must be executed just after page load
@@ -143,6 +149,40 @@ const createDays = function() {
 
         // 3) attach it to the DOM
         daysContainerNode.appendChild(dayDivNode)
+
+        // 4) we initialize the corresponding empty array of meetings in the data structure
+        calendar[dayNumber] = [] // At the beginning, every day will have zero meetings, empty array
     }
 }
 
+const addMeeting = function() {
+
+    // 1) We get the day we selected
+    let selectedDay = document.querySelector(".selected")
+    if(selectedDay === null) {
+        // We did not select a day, so we just tell the user and exit the function
+        alert("Please, select a day where to add the meeting!")
+        return
+    }
+
+    let dayNumberAsString = selectedDay.innerText
+
+    // 2) We get the array of meetings for the day, from the calendar object
+    let meetingsForTheDay = calendar[dayNumberAsString]
+
+    // 3) We get the values and put them inside a new meeting object
+    let timeInputNode = document.getElementById("appointment-time")
+
+    let descriptionInputNode = document.getElementById("appointment-description")
+
+    let newMeeting = {
+        time:  timeInputNode.value,
+        description: descriptionInputNode.value
+    }
+
+    // 4) We add it to the meetings for the day
+    meetingsForTheDay.push(newMeeting)
+
+    // 5) We re-display the meetings for the day, so that we see also the new one
+    displayMeetingsForDay(dayNumberAsString)
+}
