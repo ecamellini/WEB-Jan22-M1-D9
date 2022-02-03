@@ -18,8 +18,41 @@ RELATIONSHIPS:
 
 (You will learn to do Entity-Relationship models)
 
+IN JS:
+--> Appointment:  an object, { time: '09:00', description: 'Live lecture' }
+--> Day:          [
+    { time: '09:00', description: 'Live lecture' },
+    { time: '20:00', description: 'Dinner' }
+ ]
+
+let appoitmentExample = {
+    time: '09:00', // TODO in the future, this must be a Date, right now let's use a string
+    description: 'Live Lecture'
+}
+
+let day = [
+    {
+        time: '09:00', // TODO in the future, this must be a Date, right now let's use a string
+        description: 'Live Lecture'
+    },
+    { time: '20:00', description: 'Dinner' }
+]
+
+let monthCalendarExample = [
+    [{ time: '20:00', description: 'Dinner' }, { time: '09:00', description: 'Live lecture' }], // First day
+    [], // Second day
+    [], // Third day...
+]
 */
 
+// We don't know how many meetings we have in a day...
+// But we know we only have 31 days in a month
+// We know the exact number of days, we can use an object
+let calendar = {
+    "1": [{ time: '09:00', description: 'Live lecture' }, { time: '20:00', description: 'Dinner' }], // First day
+    "2": [], // Second day
+    "12": [{ time: '20:00', description: 'Dinner' }]
+}
 
 const onLoad = function() {
     // We execute ANY CODE that must be executed just after page load
