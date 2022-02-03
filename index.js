@@ -65,6 +65,27 @@ const onLoad = function() {
 // We tell the browser to execute the function above, on page load
 window.onload = onLoad // We assigned our onLoad function to the browser onload.
 
+const displayMeetingsForDay = function(dayNumberAsString) {
+
+    // 1) Access the object and read all the appointments for a day
+    let meetingsForTheDay = calendar[dayNumberAsString]
+
+    // 2) Loop through them and we display each one of them
+    let appointmentsNode = document.getElementById("appointments")
+    appointmentsNode.innerHTML = ''
+
+    for (let meeting of meetingsForTheDay) {
+        // 1) We create a node
+        let meetingLiNode = document.createElement('li')
+
+        // 2) We customize it
+        meetingLiNode.innerText = `${meeting.time} >> ${meeting.description}`
+
+        // 3) We attach it
+        appointmentsNode.appendChild(meetingLiNode)
+    }
+}
+
 const selectDay = function(event) {
     // Let's de-select the previously selected day
     // 1) Find the day that we selected
@@ -89,6 +110,11 @@ const selectDay = function(event) {
     // clickedDayNode.style.borderColor = "red"
     // We want to decouple as much as possible structure, functionalities, and styles
     // HTML - JS - CSS
+
+
+    // 5) Display the meeting for this day
+    let dayNumber = clickedDayNode.innerText
+    displayMeetingsForDay(dayNumber)
 }
 
 const createDays = function() {
